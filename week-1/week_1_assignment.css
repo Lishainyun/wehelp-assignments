@@ -1,0 +1,145 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+}
+
+a{
+	text-decoration: none;
+}
+
+.nav-bar{
+	margin: 0px 10px ;
+
+}
+
+.title{
+	font-size: 20px;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+/*For mobile phones*/
+img[src*="/nSiATQA.png"]{
+	display: inline-block;
+	float: right;
+	max-height: 25.5px;
+	margin-top: 10px;
+}
+
+ul{
+	display: none;
+}
+
+.pics_container{
+	display: grid;
+	max-width: 90%;
+	margin:20px auto;
+	grid-template-columns: 100%;
+	grid-template-rows: auto;
+	grid-gap: 20px;
+;
+}
+
+.pics{
+	width: 100%;
+	background-color: #ddeef8;
+	text-align: center;
+}	
+
+.pics p{
+	font-size: 20px;padding: 5px;color:black;margin: 0;
+}
+
+/*For tablets*/
+@media screen and (min-width: 601px){
+	img[src*="/nSiATQA.png"]{
+	display:none;
+	}	
+
+	.main-menu{
+		float: right;
+		display: flex;
+		padding: 0;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		list-style-type: none;
+	}
+
+	.main-menu li{
+		display: inline-block;
+		font-size: 20px;
+		padding: 0 10px;
+
+	}
+
+	.pics_container{
+		display: grid;
+		max-width: 90%;
+		grid-template-columns: 48% 48%;
+		grid-template-rows: auto auto auto auto;
+		grid-gap: 4%;
+		justify-content: space-evenly;
+		margin: 20px auto;
+
+	}
+
+	.pics{
+		width: 100%;
+		background-color: #ddeef8;
+		text-align: center;
+	}
+
+	.pics p{
+	font-size: 20px;padding: 5px;color:black;margin: 0;
+	}
+}
+
+/*For pc*/
+@media screen and (min-width: 1201px){
+	img[src*="/nSiATQA.png"]{
+	display:none;
+	}	
+
+	.main-menu{
+		float: right;
+		display: flex;
+		padding: 0;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		list-style-type: none;
+	}
+
+	.main-menu li{
+		display: inline-block;
+		font-size: 20px;
+		padding: 0 10px;
+
+	}
+
+	.pics_container{
+		display: grid;
+		max-width: 1200px;
+		grid-template-columns: 22% 22% 22% 22%;
+		grid-gap: 4%;
+		margin: 20px auto;
+	}
+
+	.pics{
+		width: 100%;
+		background-color: #ddeef8;
+		text-align: center;
+	}
+
+	.pics p{
+	font-size: 20px;padding: 5px;color:black;margin: 0;
+	}
+}
