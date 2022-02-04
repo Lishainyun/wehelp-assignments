@@ -5,74 +5,66 @@
 let req = new XMLHttpRequest();
 req.open('GET', 'https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json');
 req.send();
-req.onload = function() {
-	let data = JSON.parse(this.response);
-	
-	// data['result']['results'][i]['file'].length
 
-	for (let i = 0; i < 8 ; i++ ) {
-		
-		let picsContainer = document.getElementById('pics_container');
-		let picsBlock = document.createElement('div');
-		let picsContent = document.createElement('img');
-		let picsTitle = document.createElement('p');
-		let titleTextNode = document.createTextNode(data['result']['results'][i]['stitle']);
-		let picsUrl = 'https'+data['result']['results'][i]['file'].split('https',2)[1];
+let counter = 0;
 
-		picsTitle.setAttribute('style','padding: 5px;color:black;margin:0px;');
-		picsTitle.appendChild(titleTextNode);
-		picsContent.setAttribute('src', 'https'+data['result']['results'][i]['file'].split('https',2)[1])
-		picsContent.setAttribute('style','width:100%;aspect-ratio:16/9');
-		picsContent.setAttribute('title',data['result']['results'][i]['stitle']);
 
-		picsBlock.setAttribute('style', 'width: 100%;text-align:center;background-color:#ddeef8;');
-		picsBlock.appendChild(picsContent);
-		picsBlock.appendChild(picsTitle);
-		picsContainer.appendChild(picsBlock);
-	};
-}
+// 建立取得景點資訊的函式
+function picsRender(){
 
-function lomo(){
 	let data = JSON.parse(req.response);
-	// console.log(data['result']['results'].splice(0,1)[0]['stitle'])
-	// data['result']['results'][i]['file'].length
-
-	let counter = 0;
-
-	for (let i = 8; i < data['result']['results'][i]['file'].length ; i++ ) {
-
-
+	
+	for (let i = counter; i < counter + 8 ; i++ ) {
 		let picsContainer = document.getElementById('pics_container');
 		let picsBlock = document.createElement('div');
 		let picsContent = document.createElement('img');
 		let picsTitle = document.createElement('p');
-		let titleTextNode = document.createTextNode(data['result']['results'][i]['stitle']);
+		let sceneriesTitle = data['result']['results'][i]['stitle']
+		let titleTextNode = document.createTextNode(sceneriesTitle);
 		let picsUrl = 'https'+data['result']['results'][i]['file'].split('https',2)[1];
+	
 
-		// picsTitle.setAttribute('id',i);	
 		picsTitle.setAttribute('style','padding: 5px;color:black;margin:0px;display:none');
 		picsTitle.appendChild(titleTextNode);
-		picsContent.setAttribute('src', 'https'+data['result']['results'][i]['file'].split('https',2)[1])
-		// picsContent.setAttribute('id','a'+i);
+		picsContent.setAttribute('src', picsUrl);
+
 		picsContent.setAttribute('style','width:100%;aspect-ratio:16/9;display:none');
-		picsContent.setAttribute('title',data['result']['results'][i]['stitle']);
-		// picsBlock.setAttribute('id', 'b'+i);
+		picsContent.setAttribute('title',sceneriesTitle);
+
 		picsBlock.setAttribute('style', 'width: 100%;text-align:center;background-color:#ddeef8;display:none');
 		picsBlock.appendChild(picsContent);
 		picsBlock.appendChild(picsTitle);
 		picsContainer.appendChild(picsBlock);
 
+		picsBlock.style.display = "block";
+		picsContent.style.display = "block";
+		picsTitle.style.display = "block";
 
-		if (i < 16){
-			picsBlock.style.display = "block";
-			picsContent.style.display = "block";
-			picsTitle.style.display = "block";
+		if (i > 56){
+			let loadMoreButton = document.getElementById('lomo');
+			loadMoreButton.style.display='none';
 		}
 	};
 
+	counter += 8;
+	
+};
 
-}
+// 網頁載入時顯示前八個景點
+req.onload = function() {
+	picsRender()
+};
 
+
+
+// 載入更多按鈕
+function lomo(){
+	picsRender();
+	loadMoreButtonControl()
+};
+
+
+// 下拉式選單
 function dropDown() {
   		let x = document.getElementById("mbnav");
   		if (x.style.display === "none") {
