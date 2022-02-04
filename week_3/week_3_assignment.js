@@ -15,35 +15,40 @@ function picsRender(){
 	let data = JSON.parse(req.response);
 	
 	for (let i = counter; i < counter + 8 ; i++ ) {
-		let picsContainer = document.getElementById('pics_container');
-		let picsBlock = document.createElement('div');
-		let picsContent = document.createElement('img');
-		let picsTitle = document.createElement('p');
-		let sceneriesTitle = data['result']['results'][i]['stitle']
-		let titleTextNode = document.createTextNode(sceneriesTitle);
-		let picsUrl = 'https'+data['result']['results'][i]['file'].split('https',2)[1];
+		
+		if(i < data.result.results.length){
+
+			let picsContainer = document.getElementById('pics_container');
+			let picsBlock = document.createElement('div');
+			let picsContent = document.createElement('img');
+			let picsTitle = document.createElement('p');
+			let sceneriesTitle = data['result']['results'][i]['stitle']
+			let titleTextNode = document.createTextNode(sceneriesTitle);
+			let picsUrl = 'https'+data['result']['results'][i]['file'].split('https',2)[1];
 	
 
-		picsTitle.setAttribute('style','padding: 5px;color:black;margin:0px;display:none');
-		picsTitle.appendChild(titleTextNode);
-		picsContent.setAttribute('src', picsUrl);
+			picsTitle.setAttribute('style','padding: 5px;color:black;margin:0px;display:none');
+			picsTitle.appendChild(titleTextNode);
+			picsContent.setAttribute('src', picsUrl);
 
-		picsContent.setAttribute('style','width:100%;aspect-ratio:16/9;display:none');
-		picsContent.setAttribute('title',sceneriesTitle);
+			picsContent.setAttribute('style','width:100%;aspect-ratio:16/9;display:none');
+			picsContent.setAttribute('title',sceneriesTitle);
 
-		picsBlock.setAttribute('style', 'width: 100%;text-align:center;background-color:#ddeef8;display:none');
-		picsBlock.appendChild(picsContent);
-		picsBlock.appendChild(picsTitle);
-		picsContainer.appendChild(picsBlock);
+			picsBlock.setAttribute('style', 'width: 100%;text-align:center;background-color:#ddeef8;display:none');
+			picsBlock.appendChild(picsContent);
+			picsBlock.appendChild(picsTitle);
+			picsContainer.appendChild(picsBlock);
 
-		picsBlock.style.display = "block";
-		picsContent.style.display = "block";
-		picsTitle.style.display = "block";
+			picsBlock.style.display = "block";
+			picsContent.style.display = "block";
+			picsTitle.style.display = "block";
 
-		if (i > 56){
+		} else {
 			let loadMoreButton = document.getElementById('lomo');
 			loadMoreButton.style.display='none';
-		}
+			break;
+		};
+
 	};
 
 	counter += 8;
@@ -60,7 +65,7 @@ req.onload = function() {
 // 載入更多按鈕
 function lomo(){
 	picsRender();
-	loadMoreButtonControl()
+
 };
 
 
