@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Home Page</title>
+    <style>
+        *{
+            box-sizing: border-box ;
+        }
+        body{
+            margin:0px
+        }
+        h1{
+            background-color: cadetblue;
+            text-align: center; 
+            margin:0px;
+            padding:40px;
+            color:cornsilk;
+        }
+        form{
+            text-align: center;
+        }
+        fieldset{
+            border:0px;
+            margin:10px 0px 0px 0px;
+        }
+        legend{
+            text-align: center;
+            padding:5px 0px;
+            font-weight:200;
+            font-size:20px
+        }
+        label{
+            display:block;
+            font-weight: 200 ;
+            font-size:16px;
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>歡迎光臨，請註冊登入系統</h1>
+
+    <form action="/signup" method="POST">
+        <fieldset>
+            <legend>註冊帳號</legend>
+            <label for="name">姓名
+                <input type="text" name="name" id="name">
+            </label>
+            <label for="username">帳號
+                <input type="text" name="username" id="username">
+            </label>
+            <label for="password">密碼
+                <input type="text" name="password" id="password">
+            </label>
+        </fieldset>
+        <button>註冊</button>
+    </form>
+
+    <hr/>
+    
+    <form action="/signin" method="POST">
+        <fieldset>
+            <legend>登入系統</legend>
+            <label for="signInUsername">帳號
+                <input type="text" name="signInUsername" id="signInUsername">
+            </label>
+            <label for="signInPassword">密碼
+                <input type="text" name="signInPassword" id="signInPassword">
+            </label>
+        </fieldset>
+        <button>登入</button>
+    </form>
+</body>
+</head>
+</html>
