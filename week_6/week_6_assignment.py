@@ -35,17 +35,22 @@ def signup():
     name = request.form["name"] 
     userName = request.form["username"]
     userPassword = request.form["password"]
-    myDatabaseCursor.execute("SELECT username FROM member")
-    getUserName = []
+    myDatabaseCursor.execute(
+        """
+            SELECT username FROM member
+            WHERE username = '{}'     
+        """.format(userName)
+    )
+    checkUsername = []
 
     for x in myDatabaseCursor:
-        getUserName.append(x[0])
+        checkUsername.append(x)
     
     myDatabase.commit()
 
     if name=="" or userName=="" or userPassword=="":
         return redirect("/error/?message=請輸入完整資訊")
-    elif userName in getUserName:
+    elif checkUsername:
         return redirect("/signupfail/?message=帳號已經被註冊")
     else:
         insert = "INSERT INTO member (name, username, password) VALUES (%s, %s, %s)"
