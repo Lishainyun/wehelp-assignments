@@ -28,7 +28,7 @@
         }
 
     </style>
-    <script src="/addFeatures.js"></script>
+    
     <!-- <link rel="stylesheet" type="text/css" href="/public/index.css"> -->
 </head>
 <body>
@@ -38,11 +38,12 @@
 
     <hr/>
     
-    <form action="/member" name="searchForm" id="searchForm" method="GET">
-        <legend><h3>查詢會員姓名</h3></legend>
-            <input type="search" name="username" id="searchName">
-            <button id="searchButton">查詢</button>
-    </form>
+    <h3>查詢會員姓名</h3>
+    <input type="text" name="searchName" id="searchName">
+    <button id="searchBtn">查詢</button>
+    <div id="result"></div>
+    <script aync src="/addFeatures.js"></script>
+
 
 </body>
 </head>
