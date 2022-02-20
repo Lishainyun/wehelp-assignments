@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Home Page</title>
+    <style>
+        *{
+            box-sizing: border-box ;
+        }
+        body{
+            margin:0px;
+            text-align: center;
+        }
+        h1{
+            background-color: cadetblue;
+            text-align: center; 
+            margin:0px;
+            padding:40px;
+            color:cornsilk;
+        }
+        h2{
+            text-align: center;
+        }
+
+        legend{
+            font-weight:200;
+            font-size:20px
+        }
+
+    </style>
+    <script src="/addFeatures.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="/public/index.css"> -->
+</head>
+<body>
+    <h1>歡迎光臨，這是會員頁</h1>
+    <h2>{{memberGreeting}}，歡迎登入系統</h2>
+    <h2><a href="/signout">登出系統</a></h2>
+
+    <hr/>
+    
+    <form action="/member" name="searchForm" id="searchForm" method="GET">
+        <legend><h3>查詢會員姓名</h3></legend>
+            <input type="search" name="username" id="searchName">
+            <button id="searchButton">查詢</button>
+    </form>
+
+</body>
+</head>
+</html>
