@@ -14,11 +14,8 @@ seachBtn.addEventListener('click', () => {
     .then((data) => {
 
         let resData = data["data"]
-        // let resDiv = document.createElement('div')
         let resultDiv = document.getElementById('result')
-        
-        // resDiv.setAttribute('style','text-align:center; padding: 5px; font-size:20px');
-        // resDiv.style.display = 'block';
+
         while (resultDiv.firstChild) {
             resultDiv.removeChild(resultDiv.firstChild);
         }
